@@ -18,6 +18,8 @@ import { HelmetProvider } from "react-helmet-async";
 import PageTracker from "./components/common/PageTracker.js";
 import TermsAndConditions from "./pages/website/TermsAndConditions.jsx";
 import PrivacyPolicy from "./pages/website/PrivacyPolicy.jsx";
+import CancellationRefund from "./pages/website/CancellationRefund.jsx";
+import ShippingDelivery from "./pages/website/ShippingDelivery.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const ServicePageLayout = lazy(() => import("./layout/ServicePageLayout"));
@@ -263,6 +265,26 @@ export default function App() {
                     <WhatsAppIcon />
                     <WebsiteHeader />
                     <PrivacyPolicy />
+                  </>
+                }
+              />
+              <Route
+                path="/cancellation-refund"
+                element={
+                  <>
+                    <WhatsAppIcon />
+                    <WebsiteHeader />
+                    <CancellationRefund />
+                  </>
+                }
+              />
+              <Route
+                path="/shipping-delivery"
+                element={
+                  <>
+                    <WhatsAppIcon />
+                    <WebsiteHeader />
+                    <ShippingDelivery />
                   </>
                 }
               />

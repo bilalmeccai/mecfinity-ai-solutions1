@@ -14,10 +14,10 @@ const SaasTransformation = () => {
   const [revenueCounter, setRevenueCounter] = useState(47200000);
   const [showExitIntent, setShowExitIntent] = useState(false);
   const [calculatorData, setCalculatorData] = useState({
-    mrr: '',
-    manualHours: '',
-    churnRate: '',
-    teamSize: ''
+    mrr: "",
+    manualHours: "",
+    churnRate: "",
+    teamSize: "",
   });
   const [calculationResult, setCalculationResult] = useState(null);
   const [showResult, setShowResult] = useState(false);
@@ -45,18 +45,18 @@ const SaasTransformation = () => {
 
   // Handle calculator input changes
   const handleCalculatorChange = (field, value) => {
-    setCalculatorData(prev => ({
+    setCalculatorData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
   // Calculate ROI and hidden costs
   const calculateROI = () => {
     const { mrr, manualHours, churnRate, teamSize } = calculatorData;
-    
+
     if (!mrr || !manualHours || !churnRate || !teamSize) {
-      alert('Please fill in all fields to calculate your hidden costs.');
+      alert("Please fill in all fields to calculate your hidden costs.");
       return;
     }
 
@@ -72,13 +72,14 @@ const SaasTransformation = () => {
     const annualManualCost = monthlyManualCost * 12;
 
     // Calculate churn cost
-    const churnCost = (mrrValue * churnValue / 100) * 12; // Annual churn cost
+    const churnCost = ((mrrValue * churnValue) / 100) * 12; // Annual churn cost
 
     // Calculate team inefficiency cost
     const teamInefficiencyCost = teamValue * 0.3 * 150000; // 30% time on manual tasks, $150k average salary
 
     // Total hidden costs
-    const totalHiddenCosts = annualManualCost + churnCost + teamInefficiencyCost;
+    const totalHiddenCosts =
+      annualManualCost + churnCost + teamInefficiencyCost;
 
     // Calculate potential savings
     const automationSavings = totalHiddenCosts * 0.7; // 70% reduction with automation
@@ -90,7 +91,7 @@ const SaasTransformation = () => {
       annualHiddenCosts: Math.round(totalHiddenCosts),
       potentialSavings: Math.round(totalPotentialSavings),
       roi: Math.round((totalPotentialSavings / 50000) * 100), // Assuming $50k investment
-      paybackPeriod: Math.round(50000 / (totalPotentialSavings / 12))
+      paybackPeriod: Math.round(50000 / (totalPotentialSavings / 12)),
     };
 
     setCalculationResult(result);
@@ -304,6 +305,13 @@ const SaasTransformation = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact Section */}
+      <Contact
+        service="SaaS Transformation & Automation"
+        heading="Ready to Transform Your Business?"
+        desc="Join 500+ SaaS founders who have already transformed their businesses with our proven 90-day process."
+      />
 
       {/* Visual Showcase Section */}
       <section className="py-20 bg-backgroundcolor">
@@ -645,7 +653,9 @@ const SaasTransformation = () => {
                   className="w-full p-3 border border-primary/30 rounded-lg bg-transparent text-primary"
                   placeholder="$______"
                   value={calculatorData.mrr}
-                  onChange={(e) => handleCalculatorChange('mrr', e.target.value)}
+                  onChange={(e) =>
+                    handleCalculatorChange("mrr", e.target.value)
+                  }
                 />
               </div>
               <div>
@@ -657,7 +667,9 @@ const SaasTransformation = () => {
                   className="w-full p-3 border border-primary/30 rounded-lg bg-transparent text-primary"
                   placeholder="______"
                   value={calculatorData.manualHours}
-                  onChange={(e) => handleCalculatorChange('manualHours', e.target.value)}
+                  onChange={(e) =>
+                    handleCalculatorChange("manualHours", e.target.value)
+                  }
                 />
               </div>
               <div>
@@ -669,7 +681,9 @@ const SaasTransformation = () => {
                   className="w-full p-3 border border-primary/30 rounded-lg bg-transparent text-primary"
                   placeholder="______%"
                   value={calculatorData.churnRate}
-                  onChange={(e) => handleCalculatorChange('churnRate', e.target.value)}
+                  onChange={(e) =>
+                    handleCalculatorChange("churnRate", e.target.value)
+                  }
                 />
               </div>
               <div>
@@ -681,33 +695,39 @@ const SaasTransformation = () => {
                   className="w-full p-3 border border-primary/30 rounded-lg bg-transparent text-primary"
                   placeholder="______"
                   value={calculatorData.teamSize}
-                  onChange={(e) => handleCalculatorChange('teamSize', e.target.value)}
+                  onChange={(e) =>
+                    handleCalculatorChange("teamSize", e.target.value)
+                  }
                 />
               </div>
             </div>
-            <button 
-              className="primary-btn w-full"
-              onClick={calculateROI}
-            >
+            <button className="primary-btn w-full" onClick={calculateROI}>
               Calculate My Hidden Costs
             </button>
-            
+
             {showResult && calculationResult && (
               <div className="mt-6 space-y-4">
                 <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-                  <h3 className="text-lg font-bold text-red-500 mb-2">Your Hidden Costs</h3>
+                  <h3 className="text-lg font-bold text-red-500 mb-2">
+                    Your Hidden Costs
+                  </h3>
                   <p className="text-primary font-semibold">
-                    Monthly: ${calculationResult.monthlyHiddenCosts.toLocaleString()}
+                    Monthly: $
+                    {calculationResult.monthlyHiddenCosts.toLocaleString()}
                   </p>
                   <p className="text-primary font-semibold">
-                    Annual: ${calculationResult.annualHiddenCosts.toLocaleString()}
+                    Annual: $
+                    {calculationResult.annualHiddenCosts.toLocaleString()}
                   </p>
                 </div>
-                
+
                 <div className="p-4 bg-secondary/20 rounded-lg">
-                  <h3 className="text-lg font-bold text-primary mb-2">Potential Savings with Automation</h3>
+                  <h3 className="text-lg font-bold text-primary mb-2">
+                    Potential Savings with Automation
+                  </h3>
                   <p className="text-primary font-semibold mb-2">
-                    Annual Savings: ${calculationResult.potentialSavings.toLocaleString()}
+                    Annual Savings: $
+                    {calculationResult.potentialSavings.toLocaleString()}
                   </p>
                   <p className="text-primary font-semibold mb-2">
                     ROI: {calculationResult.roi}%
@@ -716,19 +736,22 @@ const SaasTransformation = () => {
                     Payback Period: {calculationResult.paybackPeriod} months
                   </p>
                 </div>
-                
+
                 <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-center">
                   <p className="text-primary font-semibold">
-                    💰 You could save ${calculationResult.potentialSavings.toLocaleString()} annually with our automation solutions!
+                    💰 You could save $
+                    {calculationResult.potentialSavings.toLocaleString()}{" "}
+                    annually with our automation solutions!
                   </p>
                 </div>
               </div>
             )}
-            
+
             {!showResult && (
               <div className="mt-6 p-4 bg-secondary/20 rounded-lg text-center">
                 <p className="text-primary font-semibold">
-                  Fill in your details above to see your personalized ROI calculation
+                  Fill in your details above to see your personalized ROI
+                  calculation
                 </p>
               </div>
             )}
