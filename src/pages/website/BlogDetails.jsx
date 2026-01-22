@@ -3,7 +3,6 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { BlogItem } from "./Blogs";
 import { IoIosArrowForward } from "react-icons/io";
 import blogsBanner from "../../assets/images/blog-details.webp";
-import { createUrlParam } from "../../utils/helper";
 import { Helmet } from "react-helmet";
 import { useBlogBySlug, usePublishedBlogs } from "../../hooks/useBlogs";
 import { LoadingSpinner } from "../../components/common/LoadingSpinner";

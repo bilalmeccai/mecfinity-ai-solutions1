@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import { useForm } from "react-hook-form";
-import { companyDetails, emailjsDetails } from "../../constant";
+import { emailjsDetails } from "../../constant";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
 import emailjs from "@emailjs/browser";
