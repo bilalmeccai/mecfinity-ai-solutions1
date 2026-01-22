@@ -137,7 +137,7 @@ export const companyDetails = {
 };
 
 export const emailjsDetails = {
-  serviceId: "service_uisbzh8",
+  serviceId: "service_1tghfh8",
   templateId: "template_e8t5y0i",
   publicKey: "_UFO43_P5mAN3U4jH",
 };
